@@ -1,0 +1,29 @@
+syntax = "proto3";
+option go_package = "github.com/project/protos/patients";
+message Patients {
+    repeated Patient patient = 1;
+}
+
+message Patient {
+
+    string Id = 1;
+    string Name = 2;
+    int32 Age = 3;
+    string Sex = 4;
+    bool Smoker = 5;
+    int32 CigsPerDay = 6;
+    bool PrevalentStroke = 7;
+    bool Diabetes = 8;
+
+}
+
+
+
+service PatientService{
+    rpc GetPatientById (GetPatientByIdRequest) returns (Patient) {}
+    rpc InsertPatient (Patient) returns (Patient) {}
+}
+
+message GetPatientByIdRequest {
+    string id = 1;
+}
